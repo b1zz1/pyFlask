@@ -1,0 +1,38 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atividade 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- google fonts - inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body class="container column">
+    <header>
+        <h1>Atividade 1</h1>
+    </header>
+    <form class="column" action="/process_number" method="post">
+        <div>
+            <input type="number" name="input" placeholder="insert a number" />
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <!-- Display the result -->
+    {% if result %}
+        <div>The number you entered is: {{ result }}</div>
+        <div class="xd">
+            Multiplication table:
+            <ul>
+                {% for number, i, mult in mult_results %}
+                    <li>{{ number }} * {{ i }} = {{ mult }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+</html>
